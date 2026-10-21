@@ -1,16 +1,16 @@
 import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest'
 import { apiScopes } from './scopes'
 
-const { msal, account } = vi.hoisted(() => {
+const { msal, account, configuration } = vi.hoisted(() => {
   const account = { name: 'Usuario de prueba', username: 'test@example.invalid' }
-  return { account, msal: {
+  return { account, configuration: vi.fn(), msal: {
     initialize: vi.fn(), handleRedirectPromise: vi.fn(), setActiveAccount: vi.fn(),
     getAllAccounts: vi.fn(), getActiveAccount: vi.fn(), loginRedirect: vi.fn(),
     logoutRedirect: vi.fn(), acquireTokenSilent: vi.fn(), acquireTokenRedirect: vi.fn(),
   } }
 })
 vi.mock('@azure/msal-browser', () => ({
-  PublicClientApplication: class { constructor() { return msal } },
+  PublicClientApplication: class { constructor(options: unknown) { configuration(options); return msal } },
   InteractionRequiredAuthError: class extends Error {},
 }))
 import { InteractionRequiredAuthError } from '@azure/msal-browser'
@@ -29,6 +29,15 @@ beforeEach(() => {
 })
 afterEach(() => { vi.unstubAllEnvs(); vi.unstubAllGlobals() })
 describe('MSAL API access', () => {
+  it('keeps cloud redirect and logout under the deployed SPA base path', async () => {
+    vi.stubEnv('BASE_URL', '/app/')
+    vi.stubGlobal('window', { location: { origin: 'https://7k2zyh0t0d.execute-api.us-east-1.amazonaws.com' } })
+    await createAuth()
+    expect(configuration).toHaveBeenCalledWith(expect.objectContaining({ auth: expect.objectContaining({
+      redirectUri: 'https://7k2zyh0t0d.execute-api.us-east-1.amazonaws.com/app/',
+      postLogoutRedirectUri: 'https://7k2zyh0t0d.execute-api.us-east-1.amazonaws.com/app/',
+    }) }))
+  })
   it('returns the access token, requests exactly the API scopes, and can force refresh', async () => {
     msal.acquireTokenSilent.mockResolvedValue({ accessToken: 'api-access', idToken: 'identity-only', fromCache: true })
     const auth = await createAuth()

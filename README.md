@@ -1,12 +1,22 @@
 # Pedidos360 frontend
 
+## EP4 - frontend alojado en AWS
+
+Aplicación cloud: **https://7k2zyh0t0d.execute-api.us-east-1.amazonaws.com/app/** (requiere laboratorio encendido). La compilación se sirve desde la EC2 propia por BFF/API Gateway HTTPS y consume las rutas JWT de esa misma API. La prueba EP4 se realizó desde este origen cloud con Microsoft Entra real.
+
+Conservé el diseño y los flujos existentes. Añadí soporte de ruta base `/app/` en Vite, React Router y redirect/logout MSAL; localhost sigue usando `/`. La SPA Entra existente conserva sus scopes y sus URI locales y añade únicamente la URI cloud autorizada.
+
+La verificación pasó **11 tests y build de producción**, catálogo, dos pedidos multítem, User 403, renovación, logout y protección de rutas. El backend amplía RabbitMQ a dos nodos y tres flujos sin cambiar el contrato REST de pedidos. [PDF complementario EP4](https://github.com/chashmdai/pedidos360-backend/blob/main/docs/EP4_IMPLEMENTACION_EVIDENCIAS.pdf), [implementación](https://github.com/chashmdai/pedidos360-backend/blob/main/docs/EP4_IMPLEMENTACION.md) y [operación](https://github.com/chashmdai/pedidos360-backend/blob/main/docs/EP4_OPERACION.md).
+
+Para compilar en WSL `codex`, desde el backend hermano: `bash scripts/ep4-build.sh frontend`. Configura Entra y el endpoint canónico y escribe el build en el caché Linux; no altera dependencias del workspace Windows. `VITE_APP_BASE_PATH` controla la ruta base; su valor por defecto es `/`. No hay tokens ni client secrets en la configuración de build.
+
 ## Entrega EP3
 
 React está autorizado por el docente. Conservé el diseño, código funcional y MSAL existentes; la integración RabbitMQ reside en el [backend hermano](https://github.com/chashmdai/pedidos360-backend). El [PDF de evidencias](https://github.com/chashmdai/pedidos360-backend/blob/main/docs/EP3_RABBITMQ_EVIDENCIAS.pdf) incluye pruebas locales e institucionales: catálogo 200, pedido multítem 201, consulta 200, rol User rechazado con 403, renovación, logout y protección de rutas. La ejecución final aprobó 10 tests y build TypeScript/Vite en WSL `codex`.
 
 Para esta etapa usar `bash scripts/ep3.sh start entra` desde `pedidos360-backend`, después de preparar broker/build según su README. La SPA permanece en `http://localhost:5173`; el BFF EP3 usa 19180. Para los fallos controlados, arrancar el modo `local` y ejecutar la aceptación del backend. No hace falta AWS ni modificar Entra. Las instrucciones cloud siguientes son históricas y no acreditan disponibilidad actual.
 
-Código y diseño visual final conservados; [backend, despliegue y evidencia de entrega](https://github.com/chashmdai/pedidos360-backend). AWS está apagado al cierre informado por el usuario; la evidencia cloud documenta pruebas anteriores y no acredita disponibilidad actual.
+Código y diseño visual conservados; [backend, despliegue y evidencia de entrega](https://github.com/chashmdai/pedidos360-backend). El cierre histórico de EP3 no ejecutó AWS. La sección EP4 y sus evidencias separadas documentan el despliegue cloud actual.
 
 React 19 + TypeScript + Vite, con React Router y MSAL React. WSL2 es el entorno de desarrollo y compilación. Esta entrega permite consultar Catalog, crear solicitudes multítem y listar pedidos propios a través del BFF.
 

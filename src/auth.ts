@@ -44,7 +44,7 @@ export async function createAuth(): Promise<AuthClient> {
   }
   const scopes = apiScopes(configuredScopes)
   const msal = new PublicClientApplication({
-    auth: { clientId, authority: 'https://login.microsoftonline.com/' + tenantId, redirectUri: window.location.origin + '/', postLogoutRedirectUri: window.location.origin + '/' },
+    auth: { clientId, authority: 'https://login.microsoftonline.com/' + tenantId, redirectUri: window.location.origin + import.meta.env.BASE_URL, postLogoutRedirectUri: window.location.origin + import.meta.env.BASE_URL },
     cache: { cacheLocation: 'sessionStorage' },
   })
   await msal.initialize()

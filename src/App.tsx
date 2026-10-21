@@ -415,7 +415,7 @@ export default function App({ auth }: { auth: AuthClient }) {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Session value={user}>
         <ApiContext value={api}>
           {auth.mode === "local" && (
