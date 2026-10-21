@@ -1,0 +1,22 @@
+{
+  "src/style.css": {
+    "sha256": "ad493558ad25d8e428fcb7732646307727c8bceb358118688cf2b08a4bce24cc",
+    "same_as_visual_baseline": true
+  },
+  "package.json": {
+    "sha256": "80383d1789e103007efe6ea441861eb366bf5bfc1e3d475ebc6fc487a1f64c51",
+    "same_as_visual_baseline": true
+  },
+  "package-lock.json": {
+    "sha256": "534ec6413e9b2f88fcdfef5c501fed4e52889a37e84fc631ebf0a27fee4641de",
+    "same_as_visual_baseline": true
+  },
+  "src/main.tsx": {
+    "sha256": "4a19abddbd3fd9200c2cb128de8e3ca38a92251966d808b02938c476eff21b36",
+    "same_as_visual_baseline": true
+  },
+  "index.html": {
+    "sha256": "8e667c85923a8e838f54360eaab5c9deadd34ce68b9d1a3aa6c0e1cbcdb7adaa",
+    "same_as_visual_baseline": true
+  }
+}

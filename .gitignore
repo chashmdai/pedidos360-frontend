@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+*.tsbuildinfo
+.vscode/
+.playwright/
+playwright-report/
+test-results/
+storage-state*.json
+auth-state*.json
+*.har
+*.trace.zip

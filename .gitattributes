@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Preserve original spacing in captured CLI output; source checks stay enabled.
+docs/evidence/** -whitespace

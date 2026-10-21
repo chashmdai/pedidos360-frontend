@@ -1,0 +1,25 @@
+{
+  "baseline_commit": "a620005cb828b07bd945afbc7c624e99f71400e4",
+  "tracked_files_checked": 18,
+  "changed_tracked_files": [],
+  "sha256": {
+    ".env.example": "4f8e0fffccfa48560edc008aaa2a1e1c998eacb22b1d3996444fad7a646e6054",
+    ".gitattributes": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+    ".gitignore": "10f8e96d4c15161faf9fb3bc6c6c1f9fc0a632401874ccd7a0c37a4a13dd4b97",
+    ".nvmrc": "5b9d0e73029969ae9000117cb877f17bb9841c1279bfe8024e294acfcf017800",
+    "README.md": "ce9a2296fb113b36fa12aa27cb87fd46bfba6694020ea4149ef97f0027d56b32",
+    "docs/evidence/frontend-build.txt": "26a544b89c98ed56cfe413284ef023d6ea5295c5d41506cb96c24ff25b0dc489",
+    "docs/evidence/frontend-tests.txt": "24143fa64451179754b0dc6c5abae1447081c2d3d27eb2126ae282a393d35bbb",
+    "index.html": "8e667c85923a8e838f54360eaab5c9deadd34ce68b9d1a3aa6c0e1cbcdb7adaa",
+    "package-lock.json": "534ec6413e9b2f88fcdfef5c501fed4e52889a37e84fc631ebf0a27fee4641de",
+    "package.json": "80383d1789e103007efe6ea441861eb366bf5bfc1e3d475ebc6fc487a1f64c51",
+    "src/App.tsx": "5961fd78030c8edc786ec75d3478fb4baea1915b87af3377b04ed92ac05d045d",
+    "src/api.test.ts": "6af8a0a3f2a0f318e597efb2320586be53b44c498557e59ab30ef9fa887c5c60",
+    "src/api.ts": "bbf62feb3f967f12a4675e27006f484bfe5fc23e78322bce64968bab92a07e9b",
+    "src/auth.ts": "8efa45b3e7336f9019176c090cc0d034ca0f7649c7a6231d2c41a0a0b3b93025",
+    "src/main.tsx": "4a19abddbd3fd9200c2cb128de8e3ca38a92251966d808b02938c476eff21b36",
+    "src/style.css": "ad493558ad25d8e428fcb7732646307727c8bceb358118688cf2b08a4bce24cc",
+    "tsconfig.json": "45340924a417670ded841a7534456179cd6d2ab508284add581f9fbbc5d5f315",
+    "vite.config.ts": "c5ac000d65adcb7fc7d641e09e067588db3e3e3773af5006c8c499b915656fae"
+  }
+}
